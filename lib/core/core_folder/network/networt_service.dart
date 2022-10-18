@@ -121,6 +121,7 @@ class NetworkService {
       var apiError = ApiError.fromDio(error);
       if (apiError.errorType == 401) {
         // eventBus.fire(LogoutEvent("just log out out of here pls"));
+        print('error plate ${error.toString()}');
       }
       return Future.error(apiError, stackTrace);
     }

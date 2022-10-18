@@ -42,8 +42,9 @@ class ApiError {
         case DioErrorType.response:
           errorType = dioError.response?.statusCode;
           if (dioError.response?.statusCode == 401) {
-            errorDescription =
-                "Your session has timed out, please login again to proceed";
+            apiErrorModel = ApiErrorModel.fromJson(dioError.response?.data);
+            errorDescription = apiErrorModel?.msg ??
+                extractDescriptionFromResponse(error.response);
           } else if (dioError.response?.statusCode == 400 ||
               dioError.response?.statusCode == 422 ||
               dioError.response?.statusCode == 403 ||
@@ -89,7 +90,7 @@ class ApiError {
 }
 
 class ApiErrorModel {
-  int? code;
+  String? code;
   String? msg;
   bool? success;
   String? details;

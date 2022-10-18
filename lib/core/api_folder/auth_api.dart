@@ -7,7 +7,6 @@ import 'package:omney/ui/screens/auth/forgot_password/verification_otp/verificat
 import 'package:omney/ui/screens/auth/get_started/sign_up_entity/sign_up_entity.dart';
 import 'package:omney/ui/screens/auth/get_started/sign_up_model/sign_up_model.dart';
 import 'package:omney/ui/screens/auth/reset_password/reset_password_entity/reset_password_entity.dart';
-
 import '../../ui/screens/auth/email_verification/email_verification_model/email_verification_model.dart';
 import '../../ui/screens/auth/email_verification/verification_entity/verification_entity.dart';
 import '../../ui/screens/auth/forgot_password/forgot_password_entity/forgot_password_entity.dart';
@@ -39,6 +38,7 @@ class AuthApi {
           data: entity.toJson());
       return LoginModel.fromJson(response.data);
     } catch (e) {
+      print('God Did $e');
       log(e.toString());
       rethrow;
     }

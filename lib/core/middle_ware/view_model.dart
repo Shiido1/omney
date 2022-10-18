@@ -101,8 +101,7 @@ class ViewModel extends BaseViewModel {
           arguments:
               ResetPasswordArguments(otpString: _otpModel!.otpId.toString()));
     } catch (e) {
-      print('object $e');
-      // AppUtils.snackbar(contxt, message: e.toString(), error: true);
+      AppUtils.snackbar(contxt, message: e.toString(), error: true);
     }
   }
 

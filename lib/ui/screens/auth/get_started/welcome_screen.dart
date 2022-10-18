@@ -199,7 +199,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                       TextFormWidget(
                           label: 'Enter your BV Number',
                           controller: bvnController,
-                          validator: AppValidator.validateString()),
+                          validator: AppValidator.validateBvn()),
                       const SizedBox(
                         height: 20,
                       ),
@@ -265,6 +265,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                                       maidenName: maidenNameController.text,
                                       bvn: bvnController.text),
                                   context);
+                              name = firstNameController.text;
                             }
                           }),
                       const SizedBox(

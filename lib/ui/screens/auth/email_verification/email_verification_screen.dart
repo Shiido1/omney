@@ -33,20 +33,20 @@ class EmailVerificationScreen extends StatelessWidget
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 50,
+                    height: 85,
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 8),
-                    decoration: const BoxDecoration(
-                        color: AppColor.blight,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          color: AppColor.primary,
-                        )),
-                  ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(left: 8),
+                  //   decoration: const BoxDecoration(
+                  //       color: AppColor.blight,
+                  //       borderRadius: BorderRadius.all(Radius.circular(10))),
+                  //   child: IconButton(
+                  //       onPressed: () {},
+                  //       icon: const Icon(
+                  //         Icons.arrow_back_ios,
+                  //         color: AppColor.primary,
+                  //       )),
+                  // ),
                   Center(
                     child: SizedBox(
                       child: Image.asset(
@@ -64,8 +64,8 @@ class EmailVerificationScreen extends StatelessWidget
                     child: Center(
                       child: Column(
                         children: [
-                          const TextView(
-                            text: 'Hi, John!',
+                         TextView(
+                            text: 'Hi, $name',
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
                           ),

@@ -95,6 +95,15 @@ class AppValidator {
     };
   }
 
+  static String? Function(String?) validateBvn({String? error}) {
+    return (String? value) {
+      if (value == null || value.length != 11 || value.trim().isEmpty) {
+        return error ?? 'Your 11 digit bvn is required.';
+      }
+      return null;
+    };
+  }
+
   static String? Function(String?) validatePass({String? error}) {
     return (String? value) {
       if (value == null || value.isEmpty || value.trim().isEmpty) {
