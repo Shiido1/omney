@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:omney/ui/screens/auth/get_started/welcome_screen.dart';
+import 'package:omney/ui/screens/auth/get_started/sign_up_for_foreigner.dart';
 import '../../../utils/color/app_color_utils.dart';
 import '../../../utils/widgets/button_widget.dart';
 import '../../../utils/widgets/text_form_widget.dart';

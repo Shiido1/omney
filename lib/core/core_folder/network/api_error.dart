@@ -43,12 +43,13 @@ class ApiError {
           errorType = dioError.response?.statusCode;
           if (dioError.response?.statusCode == 401) {
             apiErrorModel = ApiErrorModel.fromJson(dioError.response?.data);
-            errorDescription = apiErrorModel?.msg ??
+            errorDescription = apiErrorModel?.msg?[0] ??
                 extractDescriptionFromResponse(error.response);
           } else if (dioError.response?.statusCode == 400 ||
               dioError.response?.statusCode == 422 ||
               dioError.response?.statusCode == 403 ||
-              dioError.response?.statusCode == 404) {
+              dioError.response?.statusCode == 404 ||
+              dioError.response?.statusCode == 409) {
             apiErrorModel = ApiErrorModel.fromJson(dioError.response?.data);
 
             errorDescription = apiErrorModel?.msg ??

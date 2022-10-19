@@ -1,7 +1,7 @@
 import 'package:omney/ui/screens/auth/email_verification/email_verification_screen.dart';
 import 'package:omney/ui/screens/auth/forgot_password/forgot_password.dart';
 import 'package:omney/ui/screens/auth/get_started/get_started_screen.dart';
-import 'package:omney/ui/screens/auth/get_started/welcome_screen.dart';
+import 'package:omney/ui/screens/auth/get_started/sign_up_for_foreigner.dart';
 import 'package:omney/ui/screens/auth/reset_password/reset_password.dart';
 import 'package:omney/ui/screens/auth/reset_password/reset_password_screen.dart';
 import 'package:stacked/stacked_annotations.dart';

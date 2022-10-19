@@ -141,6 +141,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                           child: TextFormWidget(
                             label: 'Enter your phone number',
                             controller: phoneNumberController,
+                            keyboardType: TextInputType.number,
                             validator: AppValidator.validatePhone(),
                           ),
                         ),
@@ -346,7 +347,8 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                             onTap: () {
                               if (model.formKey.currentState!.validate()) {
                                 email = emailController.text;
-                                navigate.replaceWith(Routes.welcomeScreen);
+                                // navigate.replaceWith(Routes.welcomeScreen);
+                                navigate.pushNamedAndRemoveUntil(Routes.welcomeScreen);
                               }
                               model
                                   .validPhoneNumber(phoneNumberController.text);

@@ -14,7 +14,7 @@ import 'package:omney/ui/screens/auth/forgot_password/forgot_password.dart'
     as _i5;
 import 'package:omney/ui/screens/auth/get_started/get_started_screen.dart'
     as _i8;
-import 'package:omney/ui/screens/auth/get_started/welcome_screen.dart' as _i6;
+import 'package:omney/ui/screens/auth/get_started/sign_up_for_foreigner.dart' as _i6;
 import 'package:omney/ui/screens/auth/login/view/view/welcome_back_screen.dart'
     as _i7;
 import 'package:omney/ui/screens/auth/reset_password/reset_password.dart'

@@ -86,6 +86,15 @@ class AppValidator {
     };
   }
 
+  static String? Function(String?) validateOTP({String? error}) {
+    return (String? value) {
+      if (value!.isEmpty) {
+        return error ?? 'Enter a valid OTP';
+      }
+      return null;
+    };
+  }
+
   static String? Function(String?) validateString({String? error}) {
     return (String? value) {
       if (value == null || value.isEmpty || value.trim().isEmpty) {
