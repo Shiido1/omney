@@ -86,7 +86,8 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
                               ? Icons.visibility_off
                               : Icons.visibility,
                           controller: passwordController,
-                          validator: AppValidator.validatePass(),
+                          validator: AppValidator.validatePass(
+                              serverError: model.invalidPasswordMsg),
                           onPasswordToggle: model.toggleVisibility,
                           obscureText: model.isPasswordVisible,
                         ),

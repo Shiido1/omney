@@ -45,7 +45,7 @@ class TextFormWidget extends StatelessWidget {
     this.initialValue,
     this.inputFormatters,
     this.controller,
-    this.autoValidateMode,
+    this.autoValidateMode = AutovalidateMode.onUserInteraction,
     this.obscureText = false,
     this.readOnly = false,
     this.onTapped,
@@ -117,6 +117,7 @@ class TextFormWidget extends StatelessWidget {
       cursorColor: AppColor.primary,
       onChanged: onChange,
       keyboardType: keyboardType,
+      autovalidateMode: autoValidateMode,
     );
   }
 }

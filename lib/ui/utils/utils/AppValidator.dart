@@ -121,14 +121,17 @@ class AppValidator {
     };
   }
 
-  static String? Function(String?) validatePass({String? error}) {
+  static String? Function(String?) validatePass(
+      {String? error, String serverError = ""}) {
     return (String? value) {
-      if (value == null || value.isEmpty || value.trim().isEmpty) {
-        return error;
+      if (value!.isEmpty) {
+        return 'Password cannot be empty';
       } else if (value.length < 7) {
         return 'Password must be 8 characters';
       } else if (!_hasSpecialCharacter(value)!) {
         return 'Password must contain at least one special character';
+      } else if (serverError.isNotEmpty) {
+        return serverError;
       }
       return null;
     };

@@ -38,6 +38,9 @@ class ViewModel extends BaseViewModel {
   bool get isPasswordVisible => _isPasswordVisible;
   bool _isPasswordVisible = true;
 
+  String _invalidPasswordMsg = "";
+  String get invalidPasswordMsg => _invalidPasswordMsg;
+
   final formKey = GlobalKey<FormState>();
 
   void toggleVisibility() {
@@ -50,6 +53,11 @@ class ViewModel extends BaseViewModel {
       await runBusyFuture(repositoryImply.login(entity), throwException: true);
       await navigate.replaceWith(Routes.dashboardView);
     } catch (e) {
+      if (e.toString().contains('Invalid Password')) {
+        _invalidPasswordMsg = e.toString();
+        notifyListeners();
+        return;
+      }
       AppUtils.snackbar(contxt, message: e.toString(), error: true);
     }
   }
