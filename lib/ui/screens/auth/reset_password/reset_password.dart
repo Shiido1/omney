@@ -91,16 +91,20 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                     SizedBox(
                       child: PinCodeTextField(
                         controller: otpController,
+                        backgroundColor: AppColor.white,
+                        keyboardType: TextInputType.number,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         length: 6,
                         obscureText: false,
                         animationType: AnimationType.fade,
-                        keyboardType: TextInputType.number,
                         pinTheme: PinTheme(
                           shape: PinCodeFieldShape.box,
                           borderRadius: BorderRadius.circular(8),
                           fieldWidth: 50,
+                          // TODO: CHANGE THE COLOR OF SELECTED FIELDS
                           activeFillColor: Colors.white,
+                          // TODO: CHANGE THE COLOR OF UNSELECTED FIELDS
+                          inactiveFillColor: Colors.purple,
                         ),
                         validator: AppValidator.validateOTP(),
                         animationDuration: const Duration(milliseconds: 300),

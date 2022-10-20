@@ -79,7 +79,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         height: 1.h,
                       ),
                       TextFormWidget(
-                          label: 'Enter your BV Number',
+                          label: 'Enter your BVN Number',
                           controller: bvnController,
                           validator: AppValidator.validateBvn()),
                       SizedBox(
