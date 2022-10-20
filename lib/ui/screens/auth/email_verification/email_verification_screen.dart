@@ -132,7 +132,10 @@ class EmailVerificationScreen extends StatelessWidget
                           shape: PinCodeFieldShape.box,
                           borderRadius: BorderRadius.circular(8),
                           fieldWidth: 50,
+                          // TODO: CHANGE THE COLOR OF SELECTED FIELDS
                           activeFillColor: Colors.white,
+                          // TODO: CHANGE THE COLOR OF UNSELECTED FIELDS
+                          inactiveFillColor: Colors.purple,
                         ),
                         validator: AppValidator.validateOTP(),
                         animationDuration: const Duration(milliseconds: 300),

@@ -95,6 +95,9 @@ class AppValidator {
       if (!regex.hasMatch(value)) {
         return error ?? 'Invalid character';
       }
+      if (value.length < 6) {
+        return error ?? 'Enter a valid OTP';
+      }
       return null;
     };
   }
