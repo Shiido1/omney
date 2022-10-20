@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omney/ui/screens/auth/get_started/get_started_screen.form.dart';
 import 'package:omney/ui/screens/auth/get_started/sign_up_entity/sign_up_entity.dart';
 import 'package:stacked/stacked.dart';
@@ -13,6 +14,7 @@ import '../../../utils/color/app_color_utils.dart';
 import '../../../utils/utils/AppValidator.dart';
 import '../../../utils/utils/date_picker.dart';
 import '../../../utils/widgets/button_widget.dart';
+import '../../../utils/widgets/custom_widget.dart';
 import '../../../utils/widgets/text_form_widget.dart';
 import '../../../utils/widgets/text_view.dart';
 
@@ -26,14 +28,14 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
         builder: (_, model, __) => Scaffold(
               backgroundColor: AppColor.white,
               body: SingleChildScrollView(
-                padding: const EdgeInsets.all(22),
+                padding: EdgeInsets.all(30.r),
                 child: Form(
                   key: model.formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 4.h,
                       ),
                       Center(
                         child: Image.asset(
@@ -42,55 +44,55 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                           width: 300.0,
                         ),
                       ),
-                      const Align(
+                      Align(
                         alignment: Alignment.center,
                         child: TextView(
                           text: 'Welcome',
                           color: AppColor.black,
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: .5.h,
                       ),
-                      const Align(
+                      Align(
                         alignment: Alignment.center,
                         child: TextView(
                           text: 'Kindly enter your details to get started.',
                           color: AppColor.black,
                           textAlign: TextAlign.center,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      const SizedBox(
-                        height: 40,
+                      SizedBox(
+                        height: 3.h,
                       ),
-                      const TextView(
+                      TextView(
                         text: 'BVN',
                         color: AppColor.black,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 1.h,
                       ),
                       TextFormWidget(
                           label: 'Enter your BV Number',
                           controller: bvnController,
                           validator: AppValidator.validateBvn()),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 2.h,
                       ),
-                      const TextView(
+                      TextView(
                         text: 'Date of Birth',
                         color: AppColor.black,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 1.h,
                       ),
                       TextFormWidget(
                         label: 'yyyy-mm-dd',
@@ -106,83 +108,93 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                             }),
                         validator: AppValidator.validateString(),
                       ),
-                      const TextView(
-                        text: 'Last Name',
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      TextView(
+                        text: 'Gender',
                         color: AppColor.black,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      TextFormWidget(
+                        suffixIcon: Icons.arrow_drop_down,
+                        suffixIconColor: AppColor.grey,
+                        controller: genderController,
+                        validator: AppValidator.validateString(),
+                        readOnly: true,
+                        onTapped: () => showCustomDialog(context, items: [
+                          'male',
+                          'female',
+                        ], onTap: (value) {
+                          genderController.text = value;
+                          navigate.popRepeated(1);
+                        }),
+                      ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      TextView(
+                        text: 'Last Name',
+                        color: AppColor.black,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      SizedBox(
+                        height: 1.h,
                       ),
                       TextFormWidget(
                         label: 'Enter your Last Name',
                         controller: surnameController,
                         validator: AppValidator.validateString(),
                       ),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 2.h,
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const TextView(
+                      TextView(
                         text: 'Maiden Name',
                         color: AppColor.black,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 1.h,
                       ),
                       TextFormWidget(
                           label: 'Enter your Maiden Name',
                           controller: maidenNameController,
                           validator: AppValidator.validateString()),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 2.h,
                       ),
-                      const TextView(
-                        text: 'BVN',
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextFormWidget(
-                          label: 'Enter your BV Number',
-                          controller: bvnController,
-                          validator: AppValidator.validateBvn()),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text.rich(
+                      Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
                                 text: 'Referral Code',
                                 style: TextStyle(
                                     color: AppColor.black,
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.w500)),
-                            TextSpan(
+                            const TextSpan(
                               text: '(Optional)',
                               style: TextStyle(color: AppColor.bleugrey),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 1.h,
                       ),
                       TextFormWidget(
                         label: 'Enter your referral code here',
                         controller: referrerCodeController,
                       ),
-                      const SizedBox(
-                        height: 40,
+                      SizedBox(
+                        height: 4.h,
                       ),
                       ButtonWidget(
                           width: 250,
@@ -223,32 +235,32 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                               name = firstNameController.text;
                             }
                           }),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 2.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const TextView(
+                          TextView(
                             text: 'Already have an account? ',
                             color: AppColor.black,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                           ),
                           InkWell(
                             onTap: () =>
                                 navigate.replaceWith(Routes.welcomeBackScreen),
-                            child: const TextView(
+                            child: TextView(
                               text: 'Login',
                               color: AppColor.primary,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 25,
+                      SizedBox(
+                        height: 5.h,
                       ),
                     ],
                   ),

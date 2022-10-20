@@ -59,7 +59,7 @@ class ApiError {
                 'Something went wrong while processing your request';
           } else {
             errorDescription =
-                "Oops! we could'nt make connections, please try again";
+                "Oops! we couldn't make connections, please try again";
           }
           break;
         case DioErrorType.sendTimeout:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:omney/core/core_folder/app/app.router.dart';
 import 'package:omney/main.dart';
@@ -91,23 +92,23 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        const Center(
+                        Center(
                           child: TextView(
                             text: 'Welcome to Omney',
                             textAlign: TextAlign.center,
-                            fontSize: 32,
+                            fontSize: 32.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
-                        const Center(
+                        Center(
                           child: TextView(
                             text:
                                 'Trading international and local stocks. Omney is your one stop investment app.',
                             textAlign: TextAlign.center,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ],
@@ -124,7 +125,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               child: Image.asset(
                                 "assets/gif/world.gif",
                                 fit: BoxFit.contain,
-                                width: 200,
+                                width: 200.w,
                               ),
                             ),
                           ),
@@ -132,23 +133,23 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        const Center(
+                        Center(
                           child: TextView(
                             text: 'Global Market Trading',
                             textAlign: TextAlign.center,
-                            fontSize: 32,
+                            fontSize: 32.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
-                        const Center(
+                        Center(
                           child: TextView(
                             text:
                                 'Invest in thousands of stocks and ETFs, grow your knowledge with educational resources.',
                             textAlign: TextAlign.center,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ],
@@ -172,23 +173,23 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        const Center(
+                        Center(
                           child: TextView(
                             text: 'Account Security',
                             textAlign: TextAlign.center,
-                            fontSize: 32,
+                            fontSize: 32.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
-                        const Center(
+                        Center(
                           child: TextView(
                             text:
                                 'You’re protected with security measures like encryption and two-factor authentication.',
                             textAlign: TextAlign.center,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ],
@@ -196,15 +197,15 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 3.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: _buildPageIndicator(),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 3.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -214,9 +215,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     color: AppColor.white,
                     onTap: () => navigate.replaceWith(Routes.getStartedScreen),
                   ),
-                  const Expanded(
+                  Expanded(
                     child: SizedBox(
-                      width: 20,
+                      width: 8.w,
                     ),
                   ),
                   ButtonWidget(
@@ -227,17 +228,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: 3.h,
               ),
-              const TextView(
+              TextView(
                 text: 'or',
                 color: AppColor.black,
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: 3.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -245,36 +246,36 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   Container(
                     decoration: const BoxDecoration(
                         color: AppColor.blight, shape: BoxShape.circle),
-                    padding: const EdgeInsets.all(12),
+                    padding: EdgeInsets.all(3.r),
                     child: SvgPicture.asset(
                       'assets/svg/google.svg',
-                      height: 30,
-                      width: 30,
+                      height: 5.h,
+                      width: 5.w,
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
+                  SizedBox(
+                    width: 10.w,
                   ),
                   Container(
                     decoration: const BoxDecoration(
                         color: AppColor.blight, shape: BoxShape.circle),
-                    padding: const EdgeInsets.all(12),
+                    padding: EdgeInsets.all(3.r),
                     child: SvgPicture.asset(
                       'assets/svg/facebook.svg',
-                      height: 30,
-                      width: 30,
+                      height: 5.h,
+                      width: 5.w,
                       color: AppColor.primary,
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
+                  SizedBox(
+                    width: 10.w,
                   ),
                   Container(
                     decoration: const BoxDecoration(
                         color: AppColor.blight, shape: BoxShape.circle),
-                    padding: const EdgeInsets.all(12),
+                    padding: EdgeInsets.all(3.r),
                     child: SvgPicture.asset('assets/svg/apple.svg',
-                        height: 30, width: 30),
+                        height: 5.h, width: 5.w),
                   ),
                 ],
               )

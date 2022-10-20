@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:omney/core/core_folder/app/app.router.dart';
 import 'package:omney/core/middle_ware/view_model.dart';
+import 'package:omney/main.dart';
 import 'package:omney/ui/screens/auth/forgot_password/forgot_password.form.dart';
 import 'package:omney/ui/screens/auth/forgot_password/forgot_password_entity/forgot_password_entity.dart';
 import 'package:omney/ui/utils/utils/AppValidator.dart';
@@ -19,6 +21,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ViewModel(context: context),
+        onDispose: (model) => emailController.dispose(),
         builder: (_, model, __) => Scaffold(
               backgroundColor: AppColor.white,
               body: SingleChildScrollView(
@@ -38,7 +41,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () =>navigate.replaceWith(Routes.welcomeBackScreen),
                             icon: const Icon(
                               Icons.arrow_back_ios,
                               color: AppColor.primary,

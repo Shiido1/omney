@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omney/core/core_folder/app/app.router.dart';
 import 'package:omney/core/global_var.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -48,14 +49,16 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      navigatorKey: StackedService.navigatorKey,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(428, 92),
+        builder: (BuildContext context, Widget? child) => MaterialApp(
+              title: 'Flutter Demo',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              navigatorKey: StackedService.navigatorKey,
+              onGenerateRoute: StackedRouter().onGenerateRoute,
+            ));
   }
 }

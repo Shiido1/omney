@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:omney/core/core_folder/app/app.router.dart';
 import 'package:omney/main.dart';
@@ -42,14 +43,14 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
           return Scaffold(
             backgroundColor: AppColor.white,
             body: SingleChildScrollView(
-              padding: const EdgeInsets.all(22),
+              padding: EdgeInsets.all(34.r),
               child: Form(
                 key: model.formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 3.h,
                     ),
                     Center(
                       child: Image.asset(
@@ -58,41 +59,41 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                         width: 80.0,
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 2.h,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.center,
                       child: TextView(
                         text: 'Get Started',
                         color: AppColor.black,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 1.2.h,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.center,
                       child: TextView(
                         text: 'Let’s get to know each other.',
                         color: AppColor.black,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: 2.h,
                     ),
-                    const TextView(
+                    TextView(
                       text: 'Nationality',
                       color: AppColor.black,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 1.2.h,
                     ),
                     TextFormWidget(
                       label: 'Select your Nationality',
@@ -108,34 +109,34 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                         navigate.popRepeated(1);
                       }),
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 2.h,
                     ),
-                    const TextView(
+                    TextView(
                       text: 'Phone number',
                       color: AppColor.black,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 1.2.h,
                     ),
                     Row(
                       children: [
                         SvgPicture.asset(
                           'assets/svg/9ja.svg',
-                          height: 30,
-                          width: 30,
+                          height: 4.3.h,
+                          width: 3.7.w,
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 1.w,
                         ),
                         const Icon(
                           Icons.arrow_drop_down,
                           color: AppColor.bleugrey,
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 5.w,
                         ),
                         Expanded(
                           child: TextFormWidget(
@@ -147,30 +148,33 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                         ),
                       ],
                     ),
-                    const TextView(
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    TextView(
                       text: 'Email',
                       color: AppColor.black,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 1.2.h,
                     ),
                     TextFormWidget(
                         label: 'Enter your email',
                         controller: emailController,
                         validator: AppValidator.validateEmail()),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 2.h,
                     ),
-                    const TextView(
+                    TextView(
                       text: 'Password',
                       color: AppColor.black,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 1.2.h,
                     ),
                     TextFormWidget(
                       label: 'Create a secure password',
@@ -185,128 +189,128 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       onPasswordToggle: model.toggleVisibility,
                       obscureText: model.isPasswordVisible,
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 2.h,
                     ),
                     Row(
                       children: [
                         model.is8characters
-                            ? const Icon(
+                            ? Icon(
                                 Icons.check,
                                 color: AppColor.green,
-                                size: 14,
+                                size: 14.sp,
                               )
-                            : const TextView(
+                            : TextView(
                                 text: '-',
                                 color: AppColor.grey,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 1.4.w,
                         ),
                         TextView(
                           text: 'Not less than 8 characters',
                           color: model.is8characters == true
                               ? AppColor.green
                               : AppColor.grey,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 7.5,
+                    SizedBox(
+                      height: 1.h,
                     ),
                     Row(
                       children: [
                         model.isUpperCase
-                            ? const Icon(
+                            ? Icon(
                                 Icons.check,
                                 color: AppColor.green,
-                                size: 14,
+                                size: 14.sp,
                               )
-                            : const TextView(
+                            : TextView(
                                 text: '-',
                                 color: AppColor.grey,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 1.4.w,
                         ),
                         TextView(
                           text: 'Must contain a capital letter',
                           color: model.isUpperCase
                               ? AppColor.green
                               : AppColor.grey,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 7.5,
+                    SizedBox(
+                      height: 1.h,
                     ),
                     Row(
                       children: [
                         model.isNumber
-                            ? const Icon(
+                            ? Icon(
                                 Icons.check,
                                 color: AppColor.green,
-                                size: 14,
+                                size: 14.sp,
                               )
-                            : const TextView(
+                            : TextView(
                                 text: '-',
                                 color: AppColor.grey,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 1.4.w,
                         ),
                         TextView(
                           text: 'Must contain a number',
                           color: model.isNumber == true
                               ? AppColor.green
                               : AppColor.grey,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 7.5,
+                    SizedBox(
+                      height: 1.h,
                     ),
                     Row(
                       children: [
                         model.isSpecialCharacters
-                            ? const Icon(
+                            ? Icon(
                                 Icons.check,
                                 color: AppColor.green,
-                                size: 14,
+                                size: 14.sp,
                               )
-                            : const TextView(
+                            : TextView(
                                 text: '-',
                                 color: AppColor.grey,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 1.4.w,
                         ),
                         TextView(
                           text: 'Must contain a special character',
                           color: model.isSpecialCharacters
                               ? AppColor.green
                               : AppColor.grey,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 1.7.h,
                     ),
                     const Text.rich(
                       TextSpan(
@@ -334,8 +338,8 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 2.5.h,
                     ),
                     Center(
                       child: Column(
@@ -348,38 +352,43 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                               if (model.formKey.currentState!.validate()) {
                                 email = emailController.text;
                                 // navigate.replaceWith(Routes.welcomeScreen);
-                                navigate.pushNamedAndRemoveUntil(Routes.welcomeScreen);
+                                if (nationalityIdController.text == 'Nigeria') {
+                                  navigate.pushNamedAndRemoveUntil(
+                                      Routes.welcomeScreenLocal);
+                                } else {
+                                  navigate.replaceWith(Routes.welcomeScreen);
+                                }
                               }
                               model
                                   .validPhoneNumber(phoneNumberController.text);
                             },
                           ),
-                          const SizedBox(
-                            height: 20,
+                          SizedBox(
+                            height: 3.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const TextView(
+                              TextView(
                                 text: 'Already have an account? ',
                                 color: AppColor.black,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                               InkWell(
                                 onTap: () => navigate
                                     .navigateTo(Routes.welcomeBackScreen),
-                                child: const TextView(
+                                child: TextView(
                                   text: 'Login',
                                   color: AppColor.primary,
-                                  fontSize: 16,
+                                  fontSize: 16.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 25,
+                          SizedBox(
+                            height: 5.h,
                           ),
                         ],
                       ),

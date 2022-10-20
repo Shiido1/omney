@@ -7,6 +7,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
 import '../../../utils/color/app_color_utils.dart';
+import '../../../utils/utils/AppValidator.dart';
 import '../../../utils/widgets/button_widget.dart';
 import '../../../utils/widgets/text_view.dart';
 
@@ -94,12 +95,14 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                         length: 6,
                         obscureText: false,
                         animationType: AnimationType.fade,
+                        keyboardType: TextInputType.number,
                         pinTheme: PinTheme(
                           shape: PinCodeFieldShape.box,
                           borderRadius: BorderRadius.circular(8),
                           fieldWidth: 50,
                           activeFillColor: Colors.white,
                         ),
+                        validator: AppValidator.validateOTP(),
                         animationDuration: const Duration(milliseconds: 300),
                         enableActiveFill: true,
                         onCompleted: (v) {},

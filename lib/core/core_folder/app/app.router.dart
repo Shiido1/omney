@@ -5,7 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 import 'package:flutter/material.dart';
 import 'package:omney/ui/screens/app/dashboard/dashboard_view.dart' as _i4;
 import 'package:omney/ui/screens/auth/email_verification/email_verification_screen.dart'
@@ -13,19 +13,22 @@ import 'package:omney/ui/screens/auth/email_verification/email_verification_scre
 import 'package:omney/ui/screens/auth/forgot_password/forgot_password.dart'
     as _i5;
 import 'package:omney/ui/screens/auth/get_started/get_started_screen.dart'
-    as _i8;
-import 'package:omney/ui/screens/auth/get_started/sign_up_for_foreigner.dart' as _i6;
-import 'package:omney/ui/screens/auth/login/view/view/welcome_back_screen.dart'
-    as _i7;
-import 'package:omney/ui/screens/auth/reset_password/reset_password.dart'
-    as _i10;
-import 'package:omney/ui/screens/auth/reset_password/reset_password_screen.dart'
-    as _i11;
-import 'package:omney/ui/screens/auth/reset_password/success_screen.dart'
     as _i9;
+import 'package:omney/ui/screens/auth/get_started/sign_up_for_foreigner.dart'
+    as _i6;
+import 'package:omney/ui/screens/auth/get_started/sign_up_for_local.dart'
+    as _i7;
+import 'package:omney/ui/screens/auth/login/view/view/welcome_back_screen.dart'
+    as _i8;
+import 'package:omney/ui/screens/auth/reset_password/reset_password.dart'
+    as _i11;
+import 'package:omney/ui/screens/auth/reset_password/reset_password_screen.dart'
+    as _i12;
+import 'package:omney/ui/screens/auth/reset_password/success_screen.dart'
+    as _i10;
 import 'package:omney/ui/screens/onboarding/onboarding_screen.dart' as _i2;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i13;
+import 'package:stacked_services/stacked_services.dart' as _i14;
 
 class Routes {
   static const onBoardingPage = '/';
@@ -37,6 +40,8 @@ class Routes {
   static const forgotPassword = '/forgot-password';
 
   static const welcomeScreen = '/welcome-screen';
+
+  static const welcomeScreenLocal = '/welcome-screen-local';
 
   static const welcomeBackScreen = '/welcome-back-screen';
 
@@ -54,6 +59,7 @@ class Routes {
     dashboardView,
     forgotPassword,
     welcomeScreen,
+    welcomeScreenLocal,
     welcomeBackScreen,
     getStartedScreen,
     successScreen,
@@ -85,24 +91,28 @@ class StackedRouter extends _i1.RouterBase {
       page: _i6.WelcomeScreen,
     ),
     _i1.RouteDef(
+      Routes.welcomeScreenLocal,
+      page: _i7.WelcomeScreenLocal,
+    ),
+    _i1.RouteDef(
       Routes.welcomeBackScreen,
-      page: _i7.WelcomeBackScreen,
+      page: _i8.WelcomeBackScreen,
     ),
     _i1.RouteDef(
       Routes.getStartedScreen,
-      page: _i8.GetStartedScreen,
+      page: _i9.GetStartedScreen,
     ),
     _i1.RouteDef(
       Routes.successScreen,
-      page: _i9.SuccessScreen,
+      page: _i10.SuccessScreen,
     ),
     _i1.RouteDef(
       Routes.resetPassword,
-      page: _i10.ResetPassword,
+      page: _i11.ResetPassword,
     ),
     _i1.RouteDef(
       Routes.resetPasswordScreen,
-      page: _i11.ResetPasswordScreen,
+      page: _i12.ResetPasswordScreen,
     ),
   ];
 
@@ -146,43 +156,52 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i7.WelcomeBackScreen: (data) {
+    _i7.WelcomeScreenLocal: (data) {
+      final args = data.getArgs<WelcomeScreenLocalArguments>(
+        orElse: () => const WelcomeScreenLocalArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => _i7.WelcomeScreenLocal(key: args.key),
+        settings: data,
+      );
+    },
+    _i8.WelcomeBackScreen: (data) {
       final args = data.getArgs<WelcomeBackScreenArguments>(
         orElse: () => const WelcomeBackScreenArguments(),
       );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => _i7.WelcomeBackScreen(key: args.key),
+        builder: (context) => _i8.WelcomeBackScreen(key: args.key),
         settings: data,
       );
     },
-    _i8.GetStartedScreen: (data) {
+    _i9.GetStartedScreen: (data) {
       final args = data.getArgs<GetStartedScreenArguments>(
         orElse: () => const GetStartedScreenArguments(),
       );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => _i8.GetStartedScreen(key: args.key),
+        builder: (context) => _i9.GetStartedScreen(key: args.key),
         settings: data,
       );
     },
-    _i9.SuccessScreen: (data) {
+    _i10.SuccessScreen: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const _i9.SuccessScreen(),
+        builder: (context) => const _i10.SuccessScreen(),
         settings: data,
       );
     },
-    _i10.ResetPassword: (data) {
+    _i11.ResetPassword: (data) {
       final args = data.getArgs<ResetPasswordArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
         builder: (context) =>
-            _i10.ResetPassword(key: args.key, otpString: args.otpString),
+            _i11.ResetPassword(key: args.key, otpString: args.otpString),
         settings: data,
       );
     },
-    _i11.ResetPasswordScreen: (data) {
+    _i12.ResetPasswordScreen: (data) {
       final args = data.getArgs<ResetPasswordScreenArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
         builder: (context) =>
-            _i11.ResetPasswordScreen(key: args.key, token: args.token),
+            _i12.ResetPasswordScreen(key: args.key, token: args.token),
         settings: data,
       );
     },
@@ -202,31 +221,37 @@ class EmailVerificationScreenArguments {
 
   final String otpString;
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 }
 
 class ForgotPasswordArguments {
   const ForgotPasswordArguments({this.key});
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 }
 
 class WelcomeScreenArguments {
   const WelcomeScreenArguments({this.key});
 
-  final _i12.Key? key;
+  final _i13.Key? key;
+}
+
+class WelcomeScreenLocalArguments {
+  const WelcomeScreenLocalArguments({this.key});
+
+  final _i13.Key? key;
 }
 
 class WelcomeBackScreenArguments {
   const WelcomeBackScreenArguments({this.key});
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 }
 
 class GetStartedScreenArguments {
   const GetStartedScreenArguments({this.key});
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 }
 
 class ResetPasswordArguments {
@@ -235,7 +260,7 @@ class ResetPasswordArguments {
     required this.otpString,
   });
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 
   final String otpString;
 }
@@ -246,12 +271,12 @@ class ResetPasswordScreenArguments {
     required this.token,
   });
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 
   final String token;
 }
 
-extension NavigatorStateExtension on _i13.NavigationService {
+extension NavigatorStateExtension on _i14.NavigationService {
   Future<dynamic> navigateToOnBoardingPage([
     int? routerId,
     bool preventDuplicates = true,
@@ -268,7 +293,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
 
   Future<dynamic> navigateToEmailVerificationScreen({
     required String otpString,
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -299,7 +324,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToForgotPassword({
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -315,7 +340,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToWelcomeScreen({
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -330,8 +355,24 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToWelcomeScreenLocal({
+    _i13.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.welcomeScreenLocal,
+        arguments: WelcomeScreenLocalArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> navigateToWelcomeBackScreen({
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -347,7 +388,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToGetStartedScreen({
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -377,7 +418,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToResetPassword({
-    _i12.Key? key,
+    _i13.Key? key,
     required String otpString,
     int? routerId,
     bool preventDuplicates = true,
@@ -394,7 +435,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToResetPasswordScreen({
-    _i12.Key? key,
+    _i13.Key? key,
     required String token,
     int? routerId,
     bool preventDuplicates = true,

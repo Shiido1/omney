@@ -8,6 +8,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../ui/screens/app/dashboard/dashboard_view.dart';
+import '../../../ui/screens/auth/get_started/sign_up_for_local.dart';
 import '../../../ui/screens/auth/login/view/view/welcome_back_screen.dart';
 import '../../../ui/screens/auth/reset_password/success_screen.dart';
 import '../../../ui/screens/onboarding/onboarding_screen.dart';
@@ -25,6 +26,7 @@ import '../network/networt_service.dart';
     MaterialRoute(page: DashboardView, initial: false),
     MaterialRoute(page: ForgotPassword, initial: false),
     MaterialRoute(page: WelcomeScreen, initial: false),
+    MaterialRoute(page: WelcomeScreenLocal, initial: false),
     MaterialRoute(page: WelcomeBackScreen, initial: false),
     MaterialRoute(page: GetStartedScreen, initial: false),
     MaterialRoute(page: SuccessScreen, initial: false),
