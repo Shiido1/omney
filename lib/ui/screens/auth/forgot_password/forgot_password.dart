@@ -21,7 +21,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ViewModel(context: context),
-        onDispose: (model) => emailController.dispose(),
+        onDispose: (model) => disposeForm(),
         builder: (_, model, __) => Scaffold(
               backgroundColor: AppColor.white,
               body: SingleChildScrollView(
@@ -41,7 +41,8 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
-                            onPressed: () =>navigate.replaceWith(Routes.welcomeBackScreen),
+                            onPressed: () =>
+                                navigate.replaceWith(Routes.welcomeBackScreen),
                             icon: const Icon(
                               Icons.arrow_back_ios,
                               color: AppColor.primary,

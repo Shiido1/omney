@@ -16,7 +16,7 @@ import '../../ui/screens/auth/login/login_entity/login_entity.dart';
 import '../../ui/utils/utils/AppUtils.dart';
 import '../core_folder/app/app.logger.dart';
 
-class ViewModel extends BaseViewModel {
+class ViewModel extends FormViewModel {
   final BuildContext? context;
   final logger = getLogger('ViewModel');
 
@@ -154,5 +154,10 @@ class ViewModel extends BaseViewModel {
       _isSpecialCharacters = false;
     }
     notifyListeners();
+  }
+
+  @override
+  void setFormStatus() {
+    // TODO: implement setFormStatus
   }
 }
