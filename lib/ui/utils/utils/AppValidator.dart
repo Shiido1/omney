@@ -87,9 +87,13 @@ class AppValidator {
   }
 
   static String? Function(String?) validateOTP({String? error}) {
+    final regex = RegExp(r'^[a-zA-Z0-9]+$');
     return (String? value) {
       if (value!.isEmpty) {
         return error ?? 'Enter a valid OTP';
+      }
+      if (!regex.hasMatch(value)) {
+        return error ?? 'Invalid character';
       }
       return null;
     };
@@ -100,6 +104,7 @@ class AppValidator {
       if (value == null || value.isEmpty || value.trim().isEmpty) {
         return error ?? 'Field is required.';
       }
+
       return null;
     };
   }

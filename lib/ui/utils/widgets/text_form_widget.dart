@@ -116,6 +116,7 @@ class TextFormWidget extends StatelessWidget {
       key: formKey,
       cursorColor: AppColor.primary,
       onChanged: onChange,
+      keyboardType: keyboardType,
     );
   }
 }

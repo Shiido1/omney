@@ -31,7 +31,7 @@ class EmailVerificationScreen extends StatelessWidget
             body: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Form(
-                key:model.formKey,
+                key: model.formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -67,7 +67,7 @@ class EmailVerificationScreen extends StatelessWidget
                       child: Center(
                         child: Column(
                           children: [
-                           TextView(
+                            TextView(
                               text: 'Hi, $name',
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -171,11 +171,11 @@ class EmailVerificationScreen extends StatelessWidget
                       text: 'Verify',
                       color: AppColor.white,
                       onTap: () {
-                        if(model.formKey.currentState!.validate()){
+                        if (model.formKey.currentState!.validate()) {
                           model.verifyOTP(
-                            VerificationEntity(
-                                id: otpString, otp: otpController.text),
-                            context);
+                              VerificationEntity(
+                                  id: otpString, otp: otpController.text),
+                              context);
                         }
                       },
                       loading: model.isBusy,

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omney/core/core_folder/app/app.router.dart';
 import 'package:omney/core/global_var.dart';
+import 'package:omney/ui/screens/auth/email_verification/email_verification_screen.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'core/core_folder/app/app.locator.dart';
 
@@ -59,6 +60,7 @@ class _MyAppState extends State<MyApp> {
               ),
               navigatorKey: StackedService.navigatorKey,
               onGenerateRoute: StackedRouter().onGenerateRoute,
+              home: EmailVerificationScreen(otpString: '1212'),
             ));
   }
 }
