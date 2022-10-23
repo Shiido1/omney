@@ -28,7 +28,7 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
             body: SingleChildScrollView(
                 padding: const EdgeInsets.all(22),
                 child: Form(
-                  key: model.formKey,
+                  key: model.formKeyLogin,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -86,7 +86,7 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
                               ? Icons.visibility_off
                               : Icons.visibility,
                           controller: passwordController,
-                          validator: AppValidator.validatePass(),
+                          validator: AppValidator.validatePass(serverError: model.invalidPasswordMsg),
                           onPasswordToggle: model.toggleVisibility,
                           obscureText: model.isPasswordVisible,
                         ),
@@ -107,11 +107,11 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
                         ),
                         ButtonWidget(
                           onTap: () {
-                            if (model.formKey.currentState!.validate()) {
+                            if (model.formKeyLogin.currentState!.validate()) {
                               model.loginUser(
                                   LoginEntity(
-                                      username: usernameController.text,
-                                      password: passwordController.text),
+                                      username: usernameController.text.trim(),
+                                      password: passwordController.text.trim()),
                                   context);
                             }
                           },

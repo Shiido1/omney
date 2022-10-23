@@ -86,10 +86,17 @@ class AppValidator {
     };
   }
 
-  static String? Function(String?) validateOTP({String? error}) {
+    static String? Function(String?) validateOTP({String? error}) {
+    final regex = RegExp(r'^[a-zA-Z0-9]+$');
     return (String? value) {
       if (value!.isEmpty) {
-        return error ?? 'Enter a valid OTP';
+        return error ?? 'Field cannot be blank';
+      }
+      if (!regex.hasMatch(value)) {
+        return error ?? 'Invalid character';
+      }
+      if (value.length < 6) {
+        return error ?? 'Enter a valid complete OTP';
       }
       return null;
     };
@@ -104,6 +111,15 @@ class AppValidator {
     };
   }
 
+  static String? Function(String?) validateNationality({String? error}) {
+    return (String? value) {
+      if (value == null || value.isEmpty || value.trim().isEmpty) {
+        return error ?? 'Enter your nationality';
+      }
+      return null;
+    };
+  }
+
   static String? Function(String?) validateBvn({String? error}) {
     return (String? value) {
       if (value == null || value.length != 11 || value.trim().isEmpty) {
@@ -113,14 +129,17 @@ class AppValidator {
     };
   }
 
-  static String? Function(String?) validatePass({String? error}) {
+  static String? Function(String?) validatePass(
+      {String? error, String serverError = ""}) {
     return (String? value) {
-      if (value == null || value.isEmpty || value.trim().isEmpty) {
-        return error;
+      if (value!.isEmpty) {
+        return 'Password cannot be empty';
       } else if (value.length < 7) {
         return 'Password must be 8 characters';
       } else if (!_hasSpecialCharacter(value)!) {
         return 'Password must contain at least one special character';
+      } else if (serverError.isNotEmpty) {
+        return serverError;
       }
       return null;
     };

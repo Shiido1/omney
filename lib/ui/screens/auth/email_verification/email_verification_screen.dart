@@ -133,6 +133,8 @@ class EmailVerificationScreen extends StatelessWidget
                           borderRadius: BorderRadius.circular(8),
                           fieldWidth: 50,
                           activeFillColor: Colors.white,
+                          inactiveColor: Colors.grey,
+                          inactiveFillColor: Colors.white,
                         ),
                         validator: AppValidator.validateOTP(),
                         animationDuration: const Duration(milliseconds: 300),

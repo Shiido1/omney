@@ -21,7 +21,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ViewModel(context: context),
-        onDispose: (model) => emailController.dispose(),
+        onDispose: (model) => disposeForm(),
         builder: (_, model, __) => Scaffold(
               backgroundColor: AppColor.white,
               body: SingleChildScrollView(
@@ -41,7 +41,8 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
-                            onPressed: () =>navigate.replaceWith(Routes.welcomeBackScreen),
+                            onPressed: () =>
+                                navigate.replaceWith(Routes.welcomeBackScreen),
                             icon: const Icon(
                               Icons.arrow_back_ios,
                               color: AppColor.primary,
@@ -115,13 +116,17 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Center(
-                          child: TextView(
-                        text: 'Remember your Password?',
-                        color: AppColor.primary,
-                        fontSize: 19,
-                        fontWeight: FontWeight.w700,
-                      ))
+                      InkWell(
+                        onTap: ()=> navigate.replaceWith(Routes.resetPassword,arguments:
+              const ResetPasswordArguments(otpString:'1234')),
+                        child: const Center(
+                            child: TextView(
+                          text: 'Remember your Password?',
+                          color: AppColor.primary,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                      )
                     ],
                   ),
                 ),

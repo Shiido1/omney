@@ -61,6 +61,7 @@ class TextFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           labelText: label ?? '',

@@ -101,6 +101,8 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                           borderRadius: BorderRadius.circular(8),
                           fieldWidth: 50,
                           activeFillColor: Colors.white,
+                          inactiveColor: Colors.grey,
+                          inactiveFillColor: Colors.white,
                         ),
                         validator: AppValidator.validateOTP(),
                         animationDuration: const Duration(milliseconds: 300),
@@ -138,10 +140,14 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                       width: 250,
                       text: 'Continue',
                       color: AppColor.white,
-                      onTap: () => model.verifyPasswordOTP(
-                          VerificationOtpEntity(
-                              id: otpString, otp: otpController.text),
-                          context),
+                      onTap: () {
+                        if (model.formKey.currentState!.validate()) {
+                          model.verifyPasswordOTP(
+                              VerificationOtpEntity(
+                                  id: otpString, otp: otpController.text),
+                              context);
+                        }
+                      },
                       loading: model.isBusy,
                     ),
                     const SizedBox(

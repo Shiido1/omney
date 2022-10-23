@@ -99,7 +99,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       label: 'Select your Nationality',
                       suffixIcon: Icons.arrow_drop_down,
                       controller: nationalityIdController,
-                      validator: AppValidator.validateString(),
+                      validator: AppValidator.validateNationality(),
                       readOnly: true,
                       onTapped: () => showCustomDialog(context, items: [
                         'Nigeria',
@@ -183,7 +183,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                           : Icons.visibility,
                       controller: passwordController,
                       validator:
-                          AppValidator.validatePass(error: 'Field is required'),
+                          AppValidator.validatePass(error: 'Enter a valid password'),
                       onChange: (value) =>
                           model.validatePassword(passwordController.text),
                       onPasswordToggle: model.toggleVisibility,

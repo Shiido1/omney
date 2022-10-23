@@ -38,7 +38,13 @@ class ViewModel extends BaseViewModel {
   bool get isPasswordVisible => _isPasswordVisible;
   bool _isPasswordVisible = true;
 
+  String _invalidPasswordMsg = "";
+  String get invalidPasswordMsg => _invalidPasswordMsg;
+
   final formKey = GlobalKey<FormState>();
+  final formKeyLogin = GlobalKey<FormState>();
+  final formKeyForgotPassword = GlobalKey<FormState>();
+  final formKeyResetPassword = GlobalKey<FormState>();
 
   void toggleVisibility() {
     _isPasswordVisible = !_isPasswordVisible;
@@ -50,6 +56,11 @@ class ViewModel extends BaseViewModel {
       await runBusyFuture(repositoryImply.login(entity), throwException: true);
       await navigate.replaceWith(Routes.dashboardView);
     } catch (e) {
+      if (e.toString().contains('Invalid Password')) {
+        _invalidPasswordMsg = e.toString();
+        notifyListeners();
+        return;
+      }
       AppUtils.snackbar(contxt, message: e.toString(), error: true);
     }
   }
@@ -86,6 +97,7 @@ class ViewModel extends BaseViewModel {
       await navigate.clearStackAndShow(Routes.resetPasswordScreen,
           arguments: ResetPasswordScreenArguments(
               token: _verificationOtpModel!.resetToken!));
+              await AppUtils.snackbar(contxt, message: 'OTP is sent to your email');
     } catch (e) {
       AppUtils.snackbar(contxt, message: e.toString(), error: true);
     }

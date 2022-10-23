@@ -30,7 +30,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
               body: SingleChildScrollView(
                 padding: EdgeInsets.all(30.r),
                 child: Form(
-                  key: model.formKey,
+                  key: model.formKeyLogin,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -79,7 +79,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         height: 1.h,
                       ),
                       TextFormWidget(
-                          label: 'Enter your BV Number',
+                          label: 'Enter your BVN Number',
                           controller: bvnController,
                           validator: AppValidator.validateBvn()),
                       SizedBox(
@@ -202,11 +202,11 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                           color: AppColor.white,
                           loading: model.isBusy,
                           onTap: () {
-                            if (model.formKey.currentState!.validate()) {
+                            if (model.formKeyLogin.currentState!.validate()) {
                               model.signUpUser(
                                   SignUpEntity(
                                       firstName:
-                                          firstNameController.text.trim(),
+                                          "Foreign",
                                       surname: surnameController.text.trim(),
                                       phoneNumber: '234$phoneNumber',
                                       password: passwordController.text.trim(),
