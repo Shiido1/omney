@@ -42,7 +42,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
                             onPressed: () =>
-                                navigate.replaceWith(Routes.welcomeBackScreen),
+                                navigate.back(),
                             icon: const Icon(
                               Icons.arrow_back_ios,
                               color: AppColor.primary,
@@ -63,7 +63,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                       ),
                       const Center(
                           child: TextView(
-                        text: 'Forgot your Password?',
+                        text: 'Forgot your password?',
                         fontSize: 25,
                         fontWeight: FontWeight.w600,
                       )),
@@ -74,7 +74,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                         text:
                             'Enter your email address and we will send you a link to reset your password.',
                         fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w400,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(
@@ -84,7 +84,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                         text: 'Email Address',
                         color: AppColor.black,
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w400,
                       ),
                       const SizedBox(
                         height: 10,

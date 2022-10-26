@@ -47,19 +47,20 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                       Align(
                         alignment: Alignment.center,
                         child: TextView(
-                          text: 'Welcome',
+                          text: 'Let’s Get Started',
                           color: AppColor.black,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
-                        height: .5.h,
+                        height: 1.5.h,
                       ),
                       Align(
                         alignment: Alignment.center,
                         child: TextView(
-                          text: 'Kindly enter your details to get started.',
+                          text:
+                              'Lets confirm you are the original owner of this account.',
                           color: AppColor.black,
                           textAlign: TextAlign.center,
                           fontSize: 16.sp,
@@ -67,7 +68,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         ),
                       ),
                       SizedBox(
-                        height: 3.h,
+                        height: 5.h,
                       ),
                       TextView(
                         text: 'BVN',
@@ -76,14 +77,15 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: 1.h,
+                        height: 2.h,
                       ),
                       TextFormWidget(
                           label: 'Enter your BVN Number',
                           controller: bvnController,
+                          keyboardType: TextInputType.number,
                           validator: AppValidator.validateBvn()),
                       SizedBox(
-                        height: 2.h,
+                        height: 22.h,
                       ),
                       TextView(
                         text: 'Date of Birth',
@@ -92,10 +94,10 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: 1.h,
+                        height: 10.h,
                       ),
                       TextFormWidget(
-                        label: 'yyyy-mm-dd',
+                        label: 'dd-mm-yyyy',
                         suffixIcon: Icons.calendar_month,
                         size: 14,
                         suffixIconColor: AppColor.primary,
@@ -109,7 +111,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         validator: AppValidator.validateString(),
                       ),
                       SizedBox(
-                        height: 2.h,
+                        height: 22.h,
                       ),
                       TextView(
                         text: 'Gender',
@@ -118,7 +120,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: 1.h,
+                        height: 10.h,
                       ),
                       TextFormWidget(
                         suffixIcon: Icons.arrow_drop_down,
@@ -135,7 +137,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         }),
                       ),
                       SizedBox(
-                        height: 2.h,
+                        height: 22.h,
                       ),
                       TextView(
                         text: 'Last Name',
@@ -144,15 +146,16 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: 1.h,
+                        height: 10.h,
                       ),
                       TextFormWidget(
                         label: 'Enter your Last Name',
                         controller: surnameController,
-                        validator: AppValidator.validateString(),
+                        keyboardType: TextInputType.name,
+                        validator: AppValidator.validateName(),
                       ),
                       SizedBox(
-                        height: 2.h,
+                        height: 22.h,
                       ),
                       TextView(
                         text: 'Maiden Name',
@@ -161,14 +164,15 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: 1.h,
+                        height: 10.h,
                       ),
                       TextFormWidget(
                           label: 'Enter your Maiden Name',
                           controller: maidenNameController,
-                          validator: AppValidator.validateString()),
+                          keyboardType: TextInputType.name,
+                          validator: AppValidator.validateName()),
                       SizedBox(
-                        height: 2.h,
+                        height: 22.h,
                       ),
                       Text.rich(
                         TextSpan(
@@ -187,14 +191,14 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         ),
                       ),
                       SizedBox(
-                        height: 1.h,
+                        height: 10.h,
                       ),
                       TextFormWidget(
                         label: 'Enter your referral code here',
                         controller: referrerCodeController,
                       ),
                       SizedBox(
-                        height: 4.h,
+                        height: 25.h,
                       ),
                       ButtonWidget(
                           width: 250,
@@ -205,8 +209,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                             if (model.formKeyLogin.currentState!.validate()) {
                               model.signUpUser(
                                   SignUpEntity(
-                                      firstName:
-                                          "Foreign",
+                                      firstName: "Local",
                                       surname: surnameController.text.trim(),
                                       phoneNumber: '234$phoneNumber',
                                       password: passwordController.text.trim(),
@@ -236,7 +239,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                             }
                           }),
                       SizedBox(
-                        height: 2.h,
+                        height: 20.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -260,7 +263,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         ],
                       ),
                       SizedBox(
-                        height: 5.h,
+                        height: 25.h,
                       ),
                     ],
                   ),

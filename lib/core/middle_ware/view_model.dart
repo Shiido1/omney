@@ -69,10 +69,11 @@ class ViewModel extends BaseViewModel {
     try {
       _signUpModel = await runBusyFuture(repositoryImply.register(entity),
           throwException: true);
-      await navigate.replaceWith(Routes.emailVerificationScreen,
+           await AppUtils.snackbar(contxt,
+          message: 'OTP has been sent to your mobile number or email');
+       navigate.navigateTo(Routes.emailVerificationScreen,
           arguments: EmailVerificationScreenArguments(
               otpString: _signUpModel!.otpId.toString()));
-      await AppUtils.snackbar(contxt, message: 'Successful');
     } catch (e) {
       AppUtils.snackbar(contxt, message: e.toString(), error: true);
     }
@@ -94,10 +95,11 @@ class ViewModel extends BaseViewModel {
       _verificationOtpModel = await runBusyFuture(
           repositoryImply.verifyPasswordOTP(verificationOtpEntity),
           throwException: true);
-      await navigate.clearStackAndShow(Routes.resetPasswordScreen,
+
+      await AppUtils.snackbar(contxt, message: 'OTP is sent to your email');
+       navigate.clearStackAndShow(Routes.resetPasswordScreen,
           arguments: ResetPasswordScreenArguments(
               token: _verificationOtpModel!.resetToken!));
-              await AppUtils.snackbar(contxt, message: 'OTP is sent to your email');
     } catch (e) {
       AppUtils.snackbar(contxt, message: e.toString(), error: true);
     }
@@ -109,7 +111,9 @@ class ViewModel extends BaseViewModel {
       _otpModel = await runBusyFuture(
           repositoryImply.forgotPassword(forgotPasswordEntity!),
           throwException: true);
-      await navigate.replaceWith(Routes.resetPassword,
+
+      await AppUtils.snackbar(contxt, message: 'OTP is sent to your email');
+      navigate.navigateTo(Routes.resetPassword,
           arguments:
               ResetPasswordArguments(otpString: _otpModel!.otpId.toString()));
     } catch (e) {

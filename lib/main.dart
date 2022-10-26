@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(428, 92),
+        designSize: const Size(428, 926),
         builder: (BuildContext context, Widget? child) => MaterialApp(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,

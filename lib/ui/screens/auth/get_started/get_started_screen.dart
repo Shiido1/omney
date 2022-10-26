@@ -84,7 +84,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ),
                     ),
                     SizedBox(
-                      height: 2.h,
+                      height: 22.h,
                     ),
                     TextView(
                       text: 'Nationality',
@@ -93,7 +93,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(
-                      height: 1.2.h,
+                      height: 10.h,
                     ),
                     TextFormWidget(
                       label: 'Select your Nationality',
@@ -110,7 +110,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       }),
                     ),
                     SizedBox(
-                      height: 2.h,
+                      height: 22.h,
                     ),
                     TextView(
                       text: 'Phone number',
@@ -119,14 +119,14 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(
-                      height: 1.2.h,
+                      height: 10.h,
                     ),
                     Row(
                       children: [
                         SvgPicture.asset(
                           'assets/svg/9ja.svg',
-                          height: 4.3.h,
-                          width: 3.7.w,
+                          height: 32.h,
+                          width: 25.w,
                         ),
                         SizedBox(
                           width: 1.w,
@@ -149,7 +149,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ],
                     ),
                     SizedBox(
-                      height: 2.h,
+                      height: 22.h,
                     ),
                     TextView(
                       text: 'Email',
@@ -158,14 +158,14 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(
-                      height: 1.2.h,
+                      height: 10.h,
                     ),
                     TextFormWidget(
                         label: 'Enter your email',
                         controller: emailController,
                         validator: AppValidator.validateEmail()),
                     SizedBox(
-                      height: 2.h,
+                      height: 22.h,
                     ),
                     TextView(
                       text: 'Password',
@@ -174,23 +174,23 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(
-                      height: 1.2.h,
+                      height: 10.h,
                     ),
                     TextFormWidget(
                       label: 'Create a secure password',
                       suffixIcon: model.isPasswordVisible
                           ? Icons.visibility_off
                           : Icons.visibility,
-                      controller: passwordController,
-                      validator:
-                          AppValidator.validatePass(error: 'Enter a valid password'),
-                      onChange: (value) =>
-                          model.validatePassword(passwordController.text),
                       onPasswordToggle: model.toggleVisibility,
                       obscureText: model.isPasswordVisible,
+                      controller: passwordController,
+                      validator: AppValidator.validatePass(
+                          error: 'Enter a valid password'),
+                      onChange: (value) =>
+                          model.validatePassword(passwordController.text),
                     ),
                     SizedBox(
-                      height: 2.h,
+                      height: 18.h,
                     ),
                     Row(
                       children: [
@@ -207,7 +207,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                                 fontWeight: FontWeight.w500,
                               ),
                         SizedBox(
-                          width: 1.4.w,
+                          width: 2.w,
                         ),
                         TextView(
                           text: 'Not less than 8 characters',
@@ -220,7 +220,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ],
                     ),
                     SizedBox(
-                      height: 1.h,
+                      height: 4.h,
                     ),
                     Row(
                       children: [
@@ -237,7 +237,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                                 fontWeight: FontWeight.w500,
                               ),
                         SizedBox(
-                          width: 1.4.w,
+                          width: 2.w,
                         ),
                         TextView(
                           text: 'Must contain a capital letter',
@@ -250,7 +250,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ],
                     ),
                     SizedBox(
-                      height: 1.h,
+                      height: 4.h,
                     ),
                     Row(
                       children: [
@@ -267,7 +267,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                                 fontWeight: FontWeight.w500,
                               ),
                         SizedBox(
-                          width: 1.4.w,
+                          width: 2.w,
                         ),
                         TextView(
                           text: 'Must contain a number',
@@ -280,7 +280,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ],
                     ),
                     SizedBox(
-                      height: 1.h,
+                      height: 4.h,
                     ),
                     Row(
                       children: [
@@ -297,7 +297,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                                 fontWeight: FontWeight.w500,
                               ),
                         SizedBox(
-                          width: 1.4.w,
+                          width: 2.w,
                         ),
                         TextView(
                           text: 'Must contain a special character',
@@ -310,7 +310,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ],
                     ),
                     SizedBox(
-                      height: 1.7.h,
+                      height: 12.h,
                     ),
                     const Text.rich(
                       TextSpan(
@@ -339,7 +339,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       ),
                     ),
                     SizedBox(
-                      height: 2.5.h,
+                      height: 20.h,
                     ),
                     Center(
                       child: Column(
@@ -353,10 +353,10 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                                 email = emailController.text;
                                 // navigate.replaceWith(Routes.welcomeScreen);
                                 if (nationalityIdController.text == 'Nigeria') {
-                                  navigate.pushNamedAndRemoveUntil(
-                                      Routes.welcomeScreenLocal);
+                                  navigate
+                                      .navigateTo(Routes.welcomeScreenLocal);
                                 } else {
-                                  navigate.replaceWith(Routes.welcomeScreen);
+                                  navigate.navigateTo(Routes.welcomeScreen);
                                 }
                               }
                               model
@@ -364,7 +364,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                             },
                           ),
                           SizedBox(
-                            height: 3.h,
+                            height: 10.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -388,7 +388,7 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                             ],
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 25.h,
                           ),
                         ],
                       ),

@@ -111,6 +111,20 @@ class AppValidator {
     };
   }
 
+
+  static String? Function(String?) validateName({String? error}) {
+    final regex = RegExp(r'^[a-zA-Z0-9]+$');
+    return (String? value) {
+      if (value == null || value.isEmpty || value.trim().isEmpty) {
+        return error ?? 'Field is required.';
+      }
+       if (!regex.hasMatch(value)) {
+        return error ?? 'Invalid character';
+      }
+      return null;
+    };
+  }
+
   static String? Function(String?) validateNationality({String? error}) {
     return (String? value) {
       if (value == null || value.isEmpty || value.trim().isEmpty) {

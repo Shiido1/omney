@@ -68,7 +68,7 @@ class EmailVerificationScreen extends StatelessWidget
                         child: Column(
                           children: [
                            TextView(
-                              text: 'Hi, $name',
+                              text: 'Hi, $name!',
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                             ),
@@ -144,6 +144,7 @@ class EmailVerificationScreen extends StatelessWidget
                         beforeTextPaste: (text) {
                           return true;
                         },
+                        autoDisposeControllers: false,
                         appContext: context,
                       ),
                     ),

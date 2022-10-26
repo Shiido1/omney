@@ -95,7 +95,7 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
                         ),
                         InkWell(
                             onTap: () =>
-                                navigate.replaceWith(Routes.forgotPassword),
+                                navigate.navigateTo(Routes.forgotPassword),
                             child: const TextView(
                               text: 'Forgot your password?',
                               fontSize: 16,

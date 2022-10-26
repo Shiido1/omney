@@ -219,6 +219,11 @@ class ResetPasswordScreen extends StatelessWidget with $ResetPasswordScreen {
                     TextFormWidget(
                         label: 'Confirm your secured password',
                         controller: ConfirmPasswordController,
+                        suffixIcon: model.isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      onPasswordToggle: model.toggleVisibility,
+                      obscureText: model.isPasswordVisible,
                         validator: AppValidator.validatePassword(
                             NewPasswordController)),
                     const SizedBox(
@@ -231,11 +236,16 @@ class ResetPasswordScreen extends StatelessWidget with $ResetPasswordScreen {
                       width: 250,
                       text: 'Reset',
                       color: AppColor.white,
-                      onTap: () => model.resetPassword(
-                          resetPasswordEntity: ResetPasswordEntity(
-                              token: token,
-                              newPassword: NewPasswordController.text,
-                              confirmPassword: ConfirmPasswordController.text)),
+                      onTap: () {
+                        if (model.formKey.currentState!.validate()) {
+                          model.resetPassword(
+                              resetPasswordEntity: ResetPasswordEntity(
+                                  token: token,
+                                  newPassword: NewPasswordController.text,
+                                  confirmPassword:
+                                      ConfirmPasswordController.text));
+                        }
+                      },
                       loading: model.isBusy,
                     ),
                     const SizedBox(

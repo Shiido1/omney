@@ -198,14 +198,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 ),
               ),
               SizedBox(
-                height: 3.h,
+                height: 13.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: _buildPageIndicator(),
               ),
               SizedBox(
-                height: 3.h,
+                height: 12.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -229,7 +229,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 ],
               ),
               SizedBox(
-                height: 3.h,
+                height: 45.h,
               ),
               TextView(
                 text: 'or',
@@ -238,7 +238,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 fontWeight: FontWeight.bold,
               ),
               SizedBox(
-                height: 3.h,
+                height: 40.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -249,12 +249,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     padding: EdgeInsets.all(3.r),
                     child: SvgPicture.asset(
                       'assets/svg/google.svg',
-                      height: 5.h,
-                      width: 5.w,
+                      height: 20.h,
+                      width: 20.w,
                     ),
                   ),
                   SizedBox(
-                    width: 10.w,
+                    width: 25.w,
                   ),
                   Container(
                     decoration: const BoxDecoration(
@@ -262,20 +262,20 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     padding: EdgeInsets.all(3.r),
                     child: SvgPicture.asset(
                       'assets/svg/facebook.svg',
-                      height: 5.h,
-                      width: 5.w,
+                      height: 20.h,
+                      width: 20.w,
                       color: AppColor.primary,
                     ),
                   ),
                   SizedBox(
-                    width: 10.w,
+                    width: 25.w,
                   ),
                   Container(
                     decoration: const BoxDecoration(
                         color: AppColor.blight, shape: BoxShape.circle),
                     padding: EdgeInsets.all(3.r),
                     child: SvgPicture.asset('assets/svg/apple.svg',
-                        height: 5.h, width: 5.w),
+                        height: 20.h, width: 20.w),
                   ),
                 ],
               )

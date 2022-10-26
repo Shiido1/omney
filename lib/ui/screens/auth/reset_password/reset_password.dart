@@ -6,6 +6,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
+import '../../../../core/core_folder/app/app.locator.dart';
+import '../../../../main.dart';
 import '../../../utils/color/app_color_utils.dart';
 import '../../../utils/utils/AppValidator.dart';
 import '../../../utils/widgets/button_widget.dart';
@@ -40,7 +42,8 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                           color: AppColor.blight,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () =>
+                                navigate.back(),
                           icon: const Icon(
                             Icons.arrow_back_ios,
                             color: AppColor.primary,
@@ -61,7 +64,7 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                     ),
                     const Center(
                         child: TextView(
-                      text: 'Reset your Password',
+                      text: 'Reset your password',
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
                     )),
@@ -72,7 +75,7 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                       text:
                           'Please enter the OTP sent to your email to reset your password.',
                       fontSize: 15,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 20),
@@ -113,6 +116,8 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                           return true;
                         },
                         appContext: context,
+                        autoDisposeControllers: false,
+
                       ),
                     ),
                     const SizedBox(height: 20),
