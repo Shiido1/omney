@@ -213,6 +213,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ButtonWidget(
                     text: 'Sign Up',
                     color: AppColor.white,
+                    colorGrey: AppColor.primary,
                     onTap: () => navigate.replaceWith(Routes.getStartedScreen),
                   ),
                   Expanded(

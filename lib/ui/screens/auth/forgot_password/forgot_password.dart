@@ -41,8 +41,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
-                            onPressed: () =>
-                                navigate.back(),
+                            onPressed: () => navigate.back(),
                             icon: const Icon(
                               Icons.arrow_back_ios,
                               color: AppColor.primary,
@@ -97,7 +96,14 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                       const SizedBox(
                         height: 50,
                       ),
-                      InkWell(
+                      ButtonWidget(
+                        width: 250,
+                        text: 'Submit',
+                        color: AppColor.white,
+                        loading: model.isBusy,
+                        colorGrey: model.disabled
+                            ? AppColor.primary.withOpacity(0.4)
+                            : AppColor.primary,
                         onTap: () {
                           if (model.formKey.currentState!.validate()) {
                             model.forgotpasword(
@@ -106,19 +112,14 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                                 contxt: context);
                           }
                         },
-                        child: ButtonWidget(
-                          width: 250,
-                          text: 'Submit',
-                          color: AppColor.white,
-                          loading: model.isBusy,
-                        ),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       InkWell(
-                        onTap: ()=> navigate.replaceWith(Routes.resetPassword,arguments:
-              const ResetPasswordArguments(otpString:'1234')),
+                        onTap: () => navigate.replaceWith(Routes.resetPassword,
+                            arguments: const ResetPasswordArguments(
+                                otpString: '1234')),
                         child: const Center(
                             child: TextView(
                           text: 'Remember your Password?',

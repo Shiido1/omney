@@ -26,13 +26,13 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
         builder: (_, model, __) => Scaffold(
               backgroundColor: AppColor.white,
               body: SingleChildScrollView(
-                padding:  EdgeInsets.all(22.w),
+                padding: EdgeInsets.all(22.w),
                 child: Form(
                   key: model.formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       SizedBox(
+                      SizedBox(
                         height: 20.h,
                       ),
                       Center(
@@ -42,7 +42,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                           width: 300.0,
                         ),
                       ),
-                       Align(
+                      Align(
                         alignment: Alignment.center,
                         child: TextView(
                           text: 'Welcome',
@@ -51,10 +51,10 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 10.h,
                       ),
-                       Align(
+                      Align(
                         alignment: Alignment.center,
                         child: TextView(
                           text: 'Kindly enter your details to get started.',
@@ -64,10 +64,10 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 40.h,
                       ),
-                       TextView(
+                      TextView(
                         text: 'First Name',
                         color: AppColor.black,
                         fontSize: 16.sp,
@@ -82,16 +82,16 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                         keyboardType: TextInputType.text,
                         validator: AppValidator.validateName(),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 20.h,
                       ),
-                       TextView(
+                      TextView(
                         text: 'Last Name',
                         color: AppColor.black,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 10.h,
                       ),
                       TextFormWidget(
@@ -100,7 +100,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                         keyboardType: TextInputType.name,
                         validator: AppValidator.validateName(),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 20.h,
                       ),
                       Row(
@@ -109,13 +109,13 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 TextView(
+                                TextView(
                                   text: 'Date of Birth',
                                   color: AppColor.black,
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 10.h,
                                 ),
                                 TextFormWidget(
@@ -135,20 +135,20 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                               ],
                             ),
                           ),
-                           SizedBox(
+                          SizedBox(
                             width: 10.w,
                           ),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 TextView(
+                                TextView(
                                   text: 'Gender',
                                   color: AppColor.black,
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 10.h,
                                 ),
                                 TextFormWidget(
@@ -171,27 +171,34 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                           ),
                         ],
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 20.h,
                       ),
-                       TextView(
+                      TextView(
                         text: 'Maiden Name',
                         color: AppColor.black,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 10.h,
                       ),
                       TextFormWidget(
                           label: 'Enter your Maiden Name',
                           controller: maidenNameController,
                           keyboardType: TextInputType.name,
+                          onChange: (value) {
+                            if (value.isNotEmpty) {
+                              model.isDisable();
+                            } else {
+                              model.isNotDisable();
+                            }
+                          },
                           validator: AppValidator.validateName()),
-                       SizedBox(
+                      SizedBox(
                         height: 20.h,
                       ),
-                       Text.rich(
+                      Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
@@ -202,25 +209,28 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                                     fontWeight: FontWeight.w500)),
                             TextSpan(
                               text: '(Optional)',
-                              style: TextStyle(color: AppColor.bleugrey,fontSize: 14.sp),
+                              style: TextStyle(
+                                  color: AppColor.bleugrey, fontSize: 14.sp),
                             ),
                           ],
                         ),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 10.h,
                       ),
                       TextFormWidget(
                         label: 'Enter your referral code here',
                         controller: referrerCodeController,
-                        
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 40.h,
                       ),
                       ButtonWidget(
                           width: 250,
                           text: 'Continue',
+                          colorGrey: model.disabled
+                              ? AppColor.primary.withOpacity(0.4)
+                              : AppColor.primary,
                           color: AppColor.white,
                           loading: model.isBusy,
                           onTap: () {
@@ -257,13 +267,13 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                               name = firstNameController.text;
                             }
                           }),
-                       SizedBox(
+                      SizedBox(
                         height: 10.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           TextView(
+                          TextView(
                             text: 'Already have an account? ',
                             color: AppColor.black,
                             fontSize: 16.sp,
@@ -272,7 +282,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                           InkWell(
                             onTap: () =>
                                 navigate.replaceWith(Routes.welcomeBackScreen),
-                            child:  TextView(
+                            child: TextView(
                               text: 'Login',
                               color: AppColor.primary,
                               fontSize: 16.sp,
@@ -281,7 +291,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                           ),
                         ],
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 25.sp,
                       ),
                     ],

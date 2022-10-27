@@ -186,8 +186,14 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       controller: passwordController,
                       validator: AppValidator.validatePass(
                           error: 'Enter a valid password'),
-                      onChange: (value) =>
-                          model.validatePassword(passwordController.text),
+                      onChange: (value) async {
+                        await model.validatePassword(passwordController.text);
+                        if (value.isNotEmpty) {
+                          model.isDisable();
+                        } else {
+                          model.isNotDisable();
+                        }
+                      },
                     ),
                     SizedBox(
                       height: 18.h,
@@ -345,6 +351,9 @@ class GetStartedScreen extends StatelessWidget with $GetStartedScreen {
                       child: Column(
                         children: [
                           ButtonWidget(
+                            colorGrey: model.disabled
+                                ? AppColor.primary.withOpacity(0.4)
+                                : AppColor.primary,
                             width: 250,
                             text: 'Continue',
                             color: AppColor.white,

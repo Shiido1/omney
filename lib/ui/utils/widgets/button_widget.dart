@@ -10,6 +10,7 @@ class ButtonWidget extends StatelessWidget {
   final double? width;
   final String? text;
   final Color? color;
+  final Color? colorGrey;
   final bool? loading;
 
   const ButtonWidget({
@@ -20,6 +21,7 @@ class ButtonWidget extends StatelessWidget {
     this.width,
     this.text,
     this.color,
+    this.colorGrey,
     this.loading = false,
   }) : super(key: key);
 
@@ -35,13 +37,13 @@ class ButtonWidget extends StatelessWidget {
             height: height,
             width: width,
             decoration: BoxDecoration(
-                color: isThick! ? AppColor.primary : AppColor.blight,
+                color: isThick! ? colorGrey : AppColor.blight,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(32),
                 ),
                 border: Border.all(
                   width: 1,
-                  color: AppColor.primary,
+                  color: colorGrey??AppColor.primary,
                   style: BorderStyle.solid,
                 )),
             child: Center(

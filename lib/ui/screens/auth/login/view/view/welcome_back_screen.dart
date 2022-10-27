@@ -89,6 +89,13 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
                           validator: AppValidator.validatePass(serverError: model.invalidPasswordMsg),
                           onPasswordToggle: model.toggleVisibility,
                           obscureText: model.isPasswordVisible,
+                           onChange: (value) {
+                            if (value.isNotEmpty) {
+                              model.isDisable();
+                            } else {
+                              model.isNotDisable();
+                            }
+                          },
                         ),
                         const SizedBox(
                           height: 20,
@@ -119,6 +126,9 @@ class WelcomeBackScreen extends StatelessWidget with $WelcomeBackScreen {
                           text: 'Login',
                           color: AppColor.white,
                           loading: model.isBusy,
+                          colorGrey: model.disabled
+                                ? AppColor.primary.withOpacity(0.4)
+                                : AppColor.primary,
                         ),
                         const SizedBox(
                           height: 10,

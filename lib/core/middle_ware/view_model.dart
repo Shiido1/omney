@@ -46,6 +46,9 @@ class ViewModel extends BaseViewModel {
   final formKeyForgotPassword = GlobalKey<FormState>();
   final formKeyResetPassword = GlobalKey<FormState>();
 
+  bool _isDisabled = true;
+  bool get disabled => _isDisabled;
+
   void toggleVisibility() {
     _isPasswordVisible = !_isPasswordVisible;
     notifyListeners();
@@ -69,9 +72,9 @@ class ViewModel extends BaseViewModel {
     try {
       _signUpModel = await runBusyFuture(repositoryImply.register(entity),
           throwException: true);
-           await AppUtils.snackbar(contxt,
+      await AppUtils.snackbar(contxt,
           message: 'OTP has been sent to your mobile number or email');
-       navigate.navigateTo(Routes.emailVerificationScreen,
+      navigate.navigateTo(Routes.emailVerificationScreen,
           arguments: EmailVerificationScreenArguments(
               otpString: _signUpModel!.otpId.toString()));
     } catch (e) {
@@ -97,7 +100,7 @@ class ViewModel extends BaseViewModel {
           throwException: true);
 
       await AppUtils.snackbar(contxt, message: 'OTP is sent to your email');
-       navigate.clearStackAndShow(Routes.resetPasswordScreen,
+      navigate.clearStackAndShow(Routes.resetPasswordScreen,
           arguments: ResetPasswordScreenArguments(
               token: _verificationOtpModel!.resetToken!));
     } catch (e) {
@@ -126,7 +129,7 @@ class ViewModel extends BaseViewModel {
     try {
       await runBusyFuture(repositoryImply.resetPassword(resetPasswordEntity!),
           throwException: true);
-      await navigate.replaceWith(Routes.dashboardView);
+      await navigate.replaceWith(Routes.successScreen);
     } catch (e) {
       AppUtils.snackbar(context, message: e.toString(), error: true);
     }
@@ -161,6 +164,16 @@ class ViewModel extends BaseViewModel {
     } else {
       _isSpecialCharacters = false;
     }
+    notifyListeners();
+  }
+
+  isDisable() {
+    _isDisabled = false;
+    notifyListeners();
+  }
+
+  isNotDisable() {
+    _isDisabled = true;
     notifyListeners();
   }
 }

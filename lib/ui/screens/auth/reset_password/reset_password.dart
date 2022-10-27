@@ -42,8 +42,7 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                           color: AppColor.blight,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: IconButton(
-                          onPressed: () =>
-                                navigate.back(),
+                          onPressed: () => navigate.back(),
                           icon: const Icon(
                             Icons.arrow_back_ios,
                             color: AppColor.primary,
@@ -111,13 +110,18 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                         animationDuration: const Duration(milliseconds: 300),
                         enableActiveFill: true,
                         onCompleted: (v) {},
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            model.isDisable();
+                          } else {
+                            model.isNotDisable();
+                          }
+                        },
                         beforeTextPaste: (text) {
                           return true;
                         },
                         appContext: context,
                         autoDisposeControllers: false,
-
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -145,6 +149,9 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                       width: 250,
                       text: 'Continue',
                       color: AppColor.white,
+                      colorGrey: model.disabled
+                          ? AppColor.primary.withOpacity(0.4)
+                          : AppColor.primary,
                       onTap: () {
                         if (model.formKey.currentState!.validate()) {
                           model.verifyPasswordOTP(
