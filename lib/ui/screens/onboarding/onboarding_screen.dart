@@ -15,9 +15,9 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  final int _numPages = 3;
 
   final PageController _pageController = PageController(initialPage: 0);
+  final int _numPages = 3;
 
   int _currentPage = 0;
   List<Widget> _buildPageIndicator() {

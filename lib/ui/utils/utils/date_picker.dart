@@ -35,7 +35,7 @@ void _buildMaterialDatePicker(
     },
   );
   if (picked != null && picked != date) {
-    date(DateFormat('yyyy-MM-dd').format(picked));
+    date(DateFormat('dd-MM-yyyy').format(picked));
   }
 }
 
@@ -55,7 +55,7 @@ void _buildCupertinoDatePicker(
                 backgroundColor: Theme.of(context).cardColor,
                 onDateTimeChanged: (picked) {
                   if (picked != date) {
-                    date(DateFormat('yyyy-MM-dd').format(picked));
+                    date(DateFormat('dd-MM-yyyy').format(picked));
                   }
                 },
               ),

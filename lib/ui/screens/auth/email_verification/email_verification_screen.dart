@@ -10,6 +10,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import '../../../utils/widgets/button_widget.dart';
 import 'email_verification_screen.form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @FormView(fields: [FormTextField(name: 'otp')])
 
@@ -25,7 +26,11 @@ class EmailVerificationScreen extends StatelessWidget
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ViewModel(context: context),
+        onDispose: (_) => disposeForm(),
         builder: (_, model, __) {
+          String strDigits(int n) => n.toString().padLeft(2, '0');
+          final minutes = strDigits(model.myDuration.inMinutes.remainder(1));
+          final seconds = strDigits(model.myDuration.inSeconds.remainder(60));
           return Scaffold(
             backgroundColor: AppColor.white,
             body: SingleChildScrollView(
@@ -154,19 +159,29 @@ class EmailVerificationScreen extends StatelessWidget
                         appContext: context,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 5.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        TextView(
-                          text: 'Didn’t get the OTP?',
-                          fontSize: 13,
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      children: [
+                        model.isTimer
+                            ? TextView(
+                                text: '$minutes : $seconds',
+                                fontSize: 14.sp,
+                                color: AppColor.black,
+                                fontWeight: FontWeight.w500,
+                              )
+                            : InkWell(
+                              onTap:()=> model.startTimer(),
+                              child: TextView(
+                                  text: 'Didn’t get the OTP?',
+                                  fontSize: 14.sp,
+                                  color: AppColor.primary,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                            ),
                         TextView(
                           text: 'Change My Email',
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           color: AppColor.primary,
                           fontWeight: FontWeight.w500,
                         )

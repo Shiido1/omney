@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:omney/core/core_folder/app/app.router.dart';
 import 'package:omney/core/global_var.dart';
@@ -174,6 +176,53 @@ class ViewModel extends BaseViewModel {
 
   isNotDisable() {
     _isDisabled = true;
+    notifyListeners();
+  }
+
+  Timer? countdownTimer;
+  Duration myDuration = const Duration(minutes: 1);
+  bool get isTimer => _isTimer;
+  bool _isTimer = false;
+
+  /// Timer related methods ///
+  // Step 3
+  void startTimer() {
+
+    countdownTimer =
+        Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
+    print('myDuration ${myDuration.inSeconds}');
+    _isTimer = true;
+    notifyListeners();
+  }
+
+  // Step 4
+  void stopTimer() {
+    countdownTimer!.cancel();
+    notifyListeners();
+  }
+
+  // Step 5
+  void resetTimer() {
+    stopTimer();
+    myDuration = const Duration(minutes: 1);
+    _isTimer = false;
+    notifyListeners();
+  }
+
+  // Step 6
+  void setCountDown() {
+    var reduceSecondsBy = 1;
+    final seconds = myDuration.inSeconds - reduceSecondsBy;
+    if (seconds < 0) {
+      countdownTimer!.cancel();
+      print('same hit $seconds');
+      _isTimer = false;
+      resetTimer();
+      notifyListeners();
+    } else {
+      myDuration = Duration(seconds: seconds);
+      notifyListeners();
+    }
     notifyListeners();
   }
 }

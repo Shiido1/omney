@@ -21,12 +21,13 @@ import '../../../utils/widgets/text_view.dart';
 class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
   WelcomeScreenLocal({super.key});
 
+  String? finalValue;
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ViewModel(context: context),
         builder: (_, model, __) {
-          print('first field ${model.disabled.toString()}');
           return Scaffold(
             backgroundColor: AppColor.white,
             body: SingleChildScrollView(
@@ -85,12 +86,6 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         label: 'Enter your BVN Number',
                         controller: bvnController,
                         keyboardType: TextInputType.number,
-                        onChange: (value) {
-                          if (value.isNotEmpty) {
-                            model.isDisable();
-                            print('text field ${model.disabled}');
-                          }
-                        },
                         validator: AppValidator.validateBvn()),
                     SizedBox(
                       height: 22.h,
@@ -111,12 +106,13 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                       suffixIconColor: AppColor.primary,
                       readOnly: true,
                       controller: dateofBirthController,
-                      onChange: (value) {
-                        model.isDisable;
-                      },
                       onTapped: () => pickDate(
                           context: context,
                           onChange: (String date) {
+                            var firstSub = date.substring(0, 2);
+                            var secondSub = date.substring(6);
+                           finalValue =
+                                "$secondSub${date.substring(2, 6)}$firstSub";
                             dateofBirthController.text = date;
                           }),
                       validator: AppValidator.validateString(),
@@ -181,13 +177,13 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         label: 'Enter your Maiden Name',
                         controller: maidenNameController,
                         keyboardType: TextInputType.name,
-                         onChange: (value) {
-                            if (value.isNotEmpty) {
-                              model.isDisable();
-                            } else {
-                              model.isNotDisable();
-                            }
-                          },
+                        onChange: (value) {
+                          if (value.isNotEmpty) {
+                            model.isDisable();
+                          } else {
+                            model.isNotDisable();
+                          }
+                        },
                         validator: AppValidator.validateName()),
                     SizedBox(
                       height: 22.h,
@@ -224,8 +220,8 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                         color: AppColor.white,
                         loading: model.isBusy,
                         colorGrey: model.disabled
-                                ? AppColor.primary.withOpacity(0.4)
-                                : AppColor.primary,
+                            ? AppColor.primary.withOpacity(0.4)
+                            : AppColor.primary,
                         onTap: () {
                           if (model.formKeyLogin.currentState!.validate()) {
                             model.signUpUser(
@@ -240,7 +236,7 @@ class WelcomeScreenLocal extends StatelessWidget with $GetStartedScreen {
                                     gender:
                                         genderController.text == 'male' ? 1 : 2,
                                     dateofBirth:
-                                        dateofBirthController.text.trim(),
+                                        finalValue,
                                     referrerCode: referrerCodeController.text,
                                     email: emailController.text.trim(),
                                     nationalityId:

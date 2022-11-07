@@ -21,7 +21,7 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ViewModel(context: context),
-        onDispose: (model) => disposeForm(),
+        // onDispose: (model) => disposeForm(),
         builder: (_, model, __) => Scaffold(
               backgroundColor: AppColor.white,
               body: SingleChildScrollView(
@@ -92,6 +92,14 @@ class ForgotPassword extends StatelessWidget with $ForgotPassword {
                         label: 'youremail@example.com',
                         validator: AppValidator.validateEmail(),
                         controller: emailController,
+                        onChange: (value) async {
+                        if (value.isNotEmpty) {
+                          model.isDisable();
+                        } else {
+                          model.isNotDisable();
+                        }
+                      },
+
                       ),
                       const SizedBox(
                         height: 50,

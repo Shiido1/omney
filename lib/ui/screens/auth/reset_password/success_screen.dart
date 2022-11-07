@@ -57,6 +57,7 @@ class SuccessScreen extends StatelessWidget {
                 width: 250,
                 text: 'Proceed',
                 color: AppColor.white,
+                colorGrey: AppColor.primary,
                 onTap: () => navigate.replaceWith(Routes.dashboardView),
               ),
               const SizedBox(

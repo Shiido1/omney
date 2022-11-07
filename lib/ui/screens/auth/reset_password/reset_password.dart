@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omney/core/middle_ware/view_model.dart';
 import 'package:omney/ui/screens/auth/forgot_password/verification_otp/verification_otp_entity/verification_otp_entity.dart';
 import 'package:omney/ui/screens/auth/reset_password/reset_password.form.dart';
@@ -23,7 +24,11 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModel>.reactive(
         viewModelBuilder: () => ViewModel(context: context),
+        onDispose: (_) => disposeForm(),
         builder: (_, model, __) {
+          String strDigits(int n) => n.toString().padLeft(2, '0');
+          final minutes = strDigits(model.myDuration.inMinutes.remainder(1));
+          final seconds = strDigits(model.myDuration.inSeconds.remainder(60));
           return Scaffold(
             backgroundColor: AppColor.white,
             body: SingleChildScrollView(
@@ -127,16 +132,26 @@ class ResetPassword extends StatelessWidget with $ResetPassword {
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        TextView(
-                          text: 'Didn’t get the OTP?',
-                          fontSize: 13,
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      children: [
+                        model.isTimer
+                            ? TextView(
+                                text: '$minutes : $seconds',
+                                fontSize: 14.sp,
+                                color: AppColor.black,
+                                fontWeight: FontWeight.w500,
+                              )
+                            : InkWell(
+                                onTap: () => model.startTimer(),
+                                child: TextView(
+                                  text: 'Didn’t get the OTP?',
+                                  fontSize: 14.sp,
+                                  color: AppColor.primary,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                         TextView(
                           text: 'Change My Email',
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           color: AppColor.primary,
                           fontWeight: FontWeight.w500,
                         )

@@ -244,6 +244,9 @@ class ResetPasswordScreen extends StatelessWidget with $ResetPasswordScreen {
                       width: 250,
                       text: 'Reset',
                       color: AppColor.white,
+                      colorGrey: model.disabled
+                          ? AppColor.primary.withOpacity(0.4)
+                          : AppColor.primary,
                       onTap: () {
                         if (model.formKey.currentState!.validate()) {
                           model.resetPassword(

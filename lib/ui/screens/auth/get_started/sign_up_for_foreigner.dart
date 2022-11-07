@@ -19,6 +19,9 @@ import 'get_started_screen.form.dart';
 class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
   WelcomeScreen({super.key});
 
+
+  String? finalValue;
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModel>.reactive(
@@ -128,6 +131,11 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                                   onTapped: () => pickDate(
                                       context: context,
                                       onChange: (String date) {
+
+                            var firstSub = date.substring(0, 2);
+                            var secondSub = date.substring(6);
+                           finalValue =
+                                "$secondSub${date.substring(2, 6)}$firstSub";
                                         dateofBirthController.text = date;
                                       }),
                                   validator: AppValidator.validateString(),
@@ -249,7 +257,7 @@ class WelcomeScreen extends StatelessWidget with $GetStartedScreen {
                                           ? 1
                                           : 2,
                                       dateofBirth:
-                                          dateofBirthController.text.trim(),
+                                          finalValue,
                                       referrerCode: referrerCodeController.text,
                                       email: emailController.text.trim(),
                                       nationalityId:
